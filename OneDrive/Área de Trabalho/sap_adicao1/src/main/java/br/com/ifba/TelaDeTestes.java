@@ -1,23 +1,24 @@
 package br.com.ifba;
 
 import br.com.ifba.infrastructure.service.IFacade;
+import br.com.ifba.perfilusuario.view.TelaExibirPerfilUsuario;
 
 import br.com.ifba.teste.view.TesteView;
+import br.com.ifba.usuario.view.TelaExibirUsuario;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class TelaDeTestes extends javax.swing.JFrame {
-    
     // Usar para realizar testes dos que não tem tela.
-    @Autowired
-    IFacade facade;
     @Autowired
     private TesteView telaTeste;
     @Autowired
+    private TelaExibirPerfilUsuario telaPerfilUsuario;
+    @Autowired
+    private TelaExibirUsuario telaUsuario;
 
-    
     public TelaDeTestes() {
         initComponents();
         super.setLocationRelativeTo(null);
@@ -41,7 +42,6 @@ public class TelaDeTestes extends javax.swing.JFrame {
         btn01 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(800, 600));
         setResizable(false);
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
@@ -55,6 +55,7 @@ public class TelaDeTestes extends javax.swing.JFrame {
         btn09.setBackground(new java.awt.Color(0, 0, 0));
         btn09.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn09.setForeground(new java.awt.Color(255, 255, 255));
+        btn09.setText("TELA PERFIL USUARIO");
         btn09.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn09ActionPerformed(evt);
@@ -100,6 +101,7 @@ public class TelaDeTestes extends javax.swing.JFrame {
         btn08.setBackground(new java.awt.Color(0, 0, 0));
         btn08.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn08.setForeground(new java.awt.Color(255, 255, 255));
+        btn08.setText("TELA USUARIO");
         btn08.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn08ActionPerformed(evt);
@@ -202,7 +204,7 @@ public class TelaDeTestes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn09ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn09ActionPerformed
-        
+        telaPerfilUsuario.setVisible(true);
     }//GEN-LAST:event_btn09ActionPerformed
 
     private void btn05ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn05ActionPerformed
@@ -222,7 +224,7 @@ public class TelaDeTestes extends javax.swing.JFrame {
     }//GEN-LAST:event_btn03ActionPerformed
 
     private void btn08ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn08ActionPerformed
-         
+        telaUsuario.setVisible(true);
     }//GEN-LAST:event_btn08ActionPerformed
 
     private void btn02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn02ActionPerformed
