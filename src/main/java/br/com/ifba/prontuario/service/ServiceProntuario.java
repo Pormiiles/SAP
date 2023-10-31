@@ -21,6 +21,7 @@ public class ServiceProntuario implements IServiceProntuario{
     // salva o prontuario no banco de dados
     @Override
     public void saveProntuario(Prontuario prontuario) {
+       prontuario.setAtivo(true); //seta todo prontuario como ativo por default
        dao.save(prontuario);
     }
 }
