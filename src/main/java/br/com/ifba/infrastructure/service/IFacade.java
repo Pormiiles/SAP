@@ -6,6 +6,7 @@ package br.com.ifba.infrastructure.service;
 
 
 import br.com.ifba.paciente.model.Paciente;
+import br.com.ifba.prontuario.model.Prontuario;
 import br.com.ifba.teste.model.Teste;
 
 
@@ -15,5 +16,6 @@ import br.com.ifba.teste.model.Teste;
  */
 public interface IFacade {
     public abstract void saveTeste(Teste teste);
-    public abstract void savePaciente(Paciente paciente);   
+    public abstract void savePaciente(Paciente paciente);  
+    public void saveProntuario(Prontuario prontuario);
 }

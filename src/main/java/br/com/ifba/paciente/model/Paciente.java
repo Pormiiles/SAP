@@ -4,12 +4,12 @@
  */
 package br.com.ifba.paciente.model;
 
+import br.com.ifba.aluno.model.Aluno;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.springframework.data.annotation.Id;
 
 /**
  *
@@ -19,9 +19,6 @@ import org.springframework.data.annotation.Id;
 @Data
 @Table(name = "paciente")
 @EqualsAndHashCode(callSuper = false)
-public class Paciente implements Serializable {
-    @Id
-    @javax.persistence.Id
-    private String nome;
-    private String matricula;
+public class Paciente extends Aluno {
+    
 }

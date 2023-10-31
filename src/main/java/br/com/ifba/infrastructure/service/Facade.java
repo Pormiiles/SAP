@@ -7,6 +7,8 @@ package br.com.ifba.infrastructure.service;
 
 import br.com.ifba.paciente.model.Paciente;
 import br.com.ifba.paciente.service.IServicePaciente;
+import br.com.ifba.prontuario.model.Prontuario;
+import br.com.ifba.prontuario.service.IServiceProntuario;
 import br.com.ifba.teste.model.Teste;
 import br.com.ifba.teste.service.IServiceTeste;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,15 +24,21 @@ public class Facade implements IFacade {
     private IServiceTeste serviceTeste;
     @Autowired
     private IServicePaciente servicePaciente;
+    @Autowired
+    private IServiceProntuario serviceProntuario;
     
     @Override
     public void saveTeste(Teste teste){
         serviceTeste.saveTeste(teste);
     }    
+    
+    @Override
+    public void saveProntuario(Prontuario prontuario) {
+        serviceProntuario.saveProntuario(prontuario);
+    }
 
     @Override
     public void savePaciente(Paciente paciente) {
         servicePaciente.savePaciente(paciente);
     }
-
 }

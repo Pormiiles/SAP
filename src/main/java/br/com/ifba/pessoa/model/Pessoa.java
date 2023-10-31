@@ -4,30 +4,31 @@
  */
 package br.com.ifba.pessoa.model;
 
-import br.com.ifba.infrastructure.model.PersistenceEntity;
-import java.io.Serializable;
-import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
+
+import br.com.ifba.infrastructure.model.PersistenceEntity;
+import java.io.Serializable;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  *
- * @author msmmendes
+ * @author matheus
  */
 
 @Entity
 @Table(name = "pessoa")
 @Data
-public abstract class Pessoa extends PersistenceEntity implements Serializable {
+@EqualsAndHashCode(callSuper = false)
+public class Pessoa extends PersistenceEntity {
     private String nome;
     private String telefone;
     private String email;
     private String cpf;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dataNascimento;
-//    @OneToOne(fetch = FetchType.EAGER)
-//    private Usuario usuario;
-
+    
+    // @Temporal(javax.persistence.TemporalType.DATE)
+    // private Date dataNascimento;
+    /* @OneToOne(fetch = FetchType.EAGER)
+    private Usuario usuario; */
 }
