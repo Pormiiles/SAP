@@ -2,18 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
-package br.com.ifba.infrastructure.service;
-
+package br.com.ifba.paciente.service;
 
 import br.com.ifba.paciente.model.Paciente;
-import br.com.ifba.teste.model.Teste;
-
+import java.util.List;
 
 /**
  *
- * @author clebinho
+ * @author andre
  */
-public interface IFacade {
-    public abstract void saveTeste(Teste teste);
-    public abstract void savePaciente(Paciente paciente);   
+public interface IServicePaciente {
+    void savePaciente(Paciente paciente);
 }
