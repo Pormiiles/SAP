@@ -12,14 +12,12 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @ComponentScan(basePackages = "br.com.ifba")
 public class SapApplication {
-
-    public static void main(String[] args) {
-        
+    public static void main(String[] args) {     
         ConfigurableApplicationContext context = 
                 new SpringApplicationBuilder(SapApplication.class).headless(false).run(args);
         
-        TelaDeTestes telaDeTestes1 =  context.getBean(TelaDeTestes.class);
-        telaDeTestes1.setVisible(true);       
+        TelaDeTestes telaDeTestes =  context.getBean(TelaDeTestes.class);
+        telaDeTestes.setVisible(true);       
     }
 }
 
