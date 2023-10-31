@@ -6,9 +6,10 @@ package br.com.ifba.paciente.view;
 
 import br.com.ifba.infrastructure.service.IFacade;
 import br.com.ifba.paciente.model.Paciente;
-import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+/*import br.com.ifba.paciente.view.TelaConsultasPaciente;*/
+
 
 /**
  *
@@ -173,9 +174,16 @@ public class TelaCadastroPaciente extends javax.swing.JFrame {
         paciente.setNomeResponsavel(nomeResp);
         paciente.setTelefone(telefone);
         paciente.setEmail(email);
-        paciente.setCpf(cpf);
+        paciente.setCpf(cpf); 
         
         this.facade.savePaciente(paciente);
+
+        TelaConsultasPaciente telaConsultasPacientes = new TelaConsultasPaciente();
+        telaConsultasPacientes.adicionarPacienteATabela(nome, matricula);
+        telaConsultasPacientes.setVisible(true);
+        
+        this.dispose();
+
     }//GEN-LAST:event_btnCadActionPerformed
 
     /**
@@ -189,7 +197,7 @@ public class TelaCadastroPaciente extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
