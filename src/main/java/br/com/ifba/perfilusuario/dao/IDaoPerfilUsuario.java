@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
  * @author ph715
  */
 @Repository
-public interface IPerfilUsuarioDao extends JpaRepository<PerfilUsuario, Long> {
+public interface IDaoPerfilUsuario extends JpaRepository<PerfilUsuario, Long> {
     
     public List<PerfilUsuario> findByNome(String nome);
     public boolean existsByNome(String nome);
