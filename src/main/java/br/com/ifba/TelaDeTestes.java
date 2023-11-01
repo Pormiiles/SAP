@@ -3,6 +3,7 @@ package br.com.ifba;
 import br.com.ifba.paciente.view.TelaCadastroPaciente;
 
 import br.com.ifba.infrastructure.service.IFacade;
+import br.com.ifba.paciente.view.TelaExibirPacientes;
 import br.com.ifba.prontuario.view.ListaProntuarios;
 import br.com.ifba.prontuario.view.ProntuarioView;
 
@@ -29,6 +30,9 @@ public class TelaDeTestes extends javax.swing.JFrame {
 
     @Autowired
     private TelaCadastroPaciente telaCadastro;
+    
+    @Autowired
+    private TelaExibirPacientes telaExibirPacientes;
     
     public TelaDeTestes() {
         initComponents();
@@ -85,6 +89,7 @@ public class TelaDeTestes extends javax.swing.JFrame {
         btn07.setBackground(new java.awt.Color(0, 0, 0));
         btn07.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn07.setForeground(new java.awt.Color(255, 255, 255));
+        btn07.setText("EDITAR/EXIBIR PACIENTES");
         btn07.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn07ActionPerformed(evt);
@@ -103,7 +108,7 @@ public class TelaDeTestes extends javax.swing.JFrame {
         btn03.setBackground(new java.awt.Color(0, 0, 0));
         btn03.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn03.setForeground(new java.awt.Color(255, 255, 255));
-        btn03.setText("CADASTRO PACIENTE");
+        btn03.setText("CADASTRAR PACIENTES");
         btn03.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn03ActionPerformed(evt);
@@ -223,11 +228,11 @@ public class TelaDeTestes extends javax.swing.JFrame {
     }//GEN-LAST:event_btn05ActionPerformed
 
     private void btn07ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn07ActionPerformed
-         
+         this.telaExibirPacientes.setVisible(true);
     }//GEN-LAST:event_btn07ActionPerformed
 
     private void btn06ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn06ActionPerformed
-         
+        
     }//GEN-LAST:event_btn06ActionPerformed
 
     private void btn03ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn03ActionPerformed
@@ -236,7 +241,7 @@ public class TelaDeTestes extends javax.swing.JFrame {
     }//GEN-LAST:event_btn03ActionPerformed
 
     private void btn08ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn08ActionPerformed
-         
+        
     }//GEN-LAST:event_btn08ActionPerformed
 
     private void btn02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn02ActionPerformed
