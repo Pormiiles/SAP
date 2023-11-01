@@ -21,6 +21,7 @@ public class TelaEdicaoPaciente extends javax.swing.JFrame {
     
     @Autowired
     private IFacade facade;
+    
     @Autowired @Lazy
     private TelaExibirPacientes telaExibir;
     
