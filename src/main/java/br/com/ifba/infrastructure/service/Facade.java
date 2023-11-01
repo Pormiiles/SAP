@@ -5,6 +5,8 @@
 package br.com.ifba.infrastructure.service;
 
 
+import br.com.ifba.paciente.model.Paciente;
+import br.com.ifba.paciente.service.IServicePaciente;
 import br.com.ifba.prontuario.model.Prontuario;
 import br.com.ifba.prontuario.service.IServiceProntuario;
 import br.com.ifba.teste.model.Teste;
@@ -22,6 +24,8 @@ public class Facade implements IFacade {
     @Autowired
     private IServiceTeste serviceTeste;
     @Autowired
+    private IServicePaciente servicePaciente;
+    @Autowired
     private IServiceProntuario serviceProntuario;
     
     @Override
@@ -30,7 +34,22 @@ public class Facade implements IFacade {
     }    
     
     @Override
-    public void saveProntuario(Prontuario prontuario){
+    public void saveProntuario(Prontuario prontuario) {
         serviceProntuario.saveProntuario(prontuario);
+    }
+
+    @Override
+    public void savePaciente(Paciente paciente) {
+        servicePaciente.savePaciente(paciente);
     } 
+    
+    @Override
+    public List<Teste> findAll() {
+        return serviceTeste.findAll();
+    }
+
+    @Override
+    public List<Prontuario> getAllProntuarios() {
+        return serviceProntuario.getAllProntuarios();
+    }
 }

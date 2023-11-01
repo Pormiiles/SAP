@@ -5,10 +5,11 @@
 package br.com.ifba.infrastructure.service;
 
 
+import br.com.ifba.paciente.model.Paciente;
 import br.com.ifba.prontuario.model.Prontuario;
 import br.com.ifba.teste.model.Teste;
-
 import java.util.List;
+
 
 /**
  *
@@ -16,5 +17,9 @@ import java.util.List;
  */
 public interface IFacade {
     public abstract void saveTeste(Teste teste);
-    public abstract void saveProntuario(Prontuario prontuario);   
-}
+    public abstract void savePaciente(Paciente paciente);  
+    public void saveProntuario(Prontuario prontuario);
+
+     public List<Prontuario> getAllProntuarios();
+    public List<Teste> findAll();
+    }

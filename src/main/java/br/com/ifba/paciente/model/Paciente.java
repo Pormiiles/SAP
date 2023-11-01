@@ -2,32 +2,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package br.com.ifba.teste.model;
+package br.com.ifba.paciente.model;
 
+import br.com.ifba.aluno.model.Aluno;
+import java.io.Serializable;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
  *
- * @author lara
+ * @author andre
  */
 @Entity
-@Table(name = "teste")
+@Data
+@Table(name = "paciente")
 @EqualsAndHashCode(callSuper = false)
-public class Teste {
-    @Id
-    private String nome;
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
+public class Paciente extends Aluno {
     
 }
