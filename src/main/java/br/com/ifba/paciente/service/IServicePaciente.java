@@ -13,4 +13,12 @@ import java.util.List;
  */
 public interface IServicePaciente {
     void savePaciente(Paciente paciente);
+    
+    public abstract List<Paciente> getAllPaciente();
+    
+    public Paciente findById(Long id);
+    
+    public abstract Paciente updatePaciente(Paciente paciente);
+    
+    
 }
