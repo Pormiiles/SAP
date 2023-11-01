@@ -62,8 +62,12 @@ public class Facade implements IFacade {
         return serviceProntuario.getAllArquivados();
     }
     @Override
-    public void DesarquivarProntuario(Prontuario prontuario) {
-        serviceProntuario.DesarquivarProntuario(prontuario);
+    public void desarquivarProntuario(Prontuario prontuario) {
+        serviceProntuario.desarquivarProntuario(prontuario);
+    }
+    @Override
+    public void arquivarProntuario(Prontuario prontuario){
+        serviceProntuario.arquivarProntuario(prontuario);
     }
      @Override
     public Prontuario findProntuarioById(Long id) {
