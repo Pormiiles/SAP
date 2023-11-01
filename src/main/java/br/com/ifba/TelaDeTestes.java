@@ -1,5 +1,6 @@
 package br.com.ifba;
 
+import br.com.ifba.agendamento.view.TelaAgendamento;
 import br.com.ifba.paciente.view.TelaCadastroPaciente;
 
 import br.com.ifba.infrastructure.service.IFacade;
@@ -29,6 +30,9 @@ public class TelaDeTestes extends javax.swing.JFrame {
 
     @Autowired
     private TelaCadastroPaciente telaCadastro;
+    
+    @Autowired
+    private TelaAgendamento telaAgendamento;
     
     public TelaDeTestes() {
         initComponents();
@@ -94,6 +98,7 @@ public class TelaDeTestes extends javax.swing.JFrame {
         btn06.setBackground(new java.awt.Color(0, 0, 0));
         btn06.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn06.setForeground(new java.awt.Color(255, 255, 255));
+        btn06.setText("AGENDAMENTO");
         btn06.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn06ActionPerformed(evt);
@@ -227,7 +232,7 @@ public class TelaDeTestes extends javax.swing.JFrame {
     }//GEN-LAST:event_btn07ActionPerformed
 
     private void btn06ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn06ActionPerformed
-         
+        this.telaAgendamento.setVisible(true);
     }//GEN-LAST:event_btn06ActionPerformed
 
     private void btn03ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn03ActionPerformed

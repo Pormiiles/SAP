@@ -30,4 +30,27 @@ public class ServiceProntuario implements IServiceProntuario{
     public List<Prontuario> getAllProntuarios() {
         return this.dao.findAll();
     }
+
+    @Override
+    public List<Prontuario> getAllArquivados() {
+        return this.dao.findAllByAtivoIsFalse();
+    }
+
+    @Override
+    public Prontuario findById(Long id) {
+        return this.dao.findById(id);
+    }
+
+    @Override
+    public void desarquivarProntuario(Prontuario prontuario) {
+        prontuario.setAtivo(true);
+        this.dao.save(prontuario);
+    }
+
+    @Override
+    public void arquivarProntuario(Prontuario prontuario) {
+       prontuario.setAtivo(false);
+       this.dao.save(prontuario);
+
+    }
 }
