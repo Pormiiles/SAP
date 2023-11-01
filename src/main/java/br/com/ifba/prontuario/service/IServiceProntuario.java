@@ -22,7 +22,9 @@ public interface IServiceProntuario {
     public abstract List<Prontuario> getAllArquivados();
     
     //metodo que muda o ativo pra verdadeiro:
-    public abstract void DesarquivarProntuario(Prontuario prontuario);
+    public abstract void desarquivarProntuario(Prontuario prontuario);
+    //metodo que muda ativo para falso:
+    public abstract void arquivarProntuario(Prontuario prontuario);
 }
 
 

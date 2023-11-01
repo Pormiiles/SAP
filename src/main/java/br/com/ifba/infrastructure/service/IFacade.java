@@ -28,9 +28,9 @@ public interface IFacade {
     public void saveProntuario(Prontuario prontuario);
     public List<Prontuario> getAllProntuarios();
     public List<Prontuario> getAllProntuariosArquivados();
-    public void DesarquivarProntuario(Prontuario prontuario);
+    public void desarquivarProntuario(Prontuario prontuario);
     public Prontuario findProntuarioById(Long id);
-    
+    public void arquivarProntuario(Prontuario prontuario);
     
     //=====================AGENDAMENTO=====================
     public void saveDataAgendamento(Agendamento agendamento);

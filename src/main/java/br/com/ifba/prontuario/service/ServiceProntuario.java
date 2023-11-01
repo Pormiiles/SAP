@@ -42,8 +42,15 @@ public class ServiceProntuario implements IServiceProntuario{
     }
 
     @Override
-    public void DesarquivarProntuario(Prontuario prontuario) {
+    public void desarquivarProntuario(Prontuario prontuario) {
         prontuario.setAtivo(true);
         this.dao.save(prontuario);
+    }
+
+    @Override
+    public void arquivarProntuario(Prontuario prontuario) {
+       prontuario.setAtivo(false);
+       this.dao.save(prontuario);
+
     }
 }
