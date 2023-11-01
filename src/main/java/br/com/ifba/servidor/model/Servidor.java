@@ -4,9 +4,14 @@
  */
 package br.com.ifba.servidor.model;
 
+import br.com.ifba.funcaoservidor.model.FuncaoServidor;
 import br.com.ifba.pessoa.model.Pessoa;
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.Data;
 
@@ -17,7 +22,10 @@ import lombok.Data;
 @Entity
 @Table(name = "servidor")
 @Data
-public abstract class Servidor extends Pessoa implements Serializable {
+public class Servidor extends Pessoa implements Serializable {
     private String siape;
-    private String descricao;
+    
+    @OneToMany(mappedBy = "servidor", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<FuncaoServidor> funcaoServidor;
+    
 }
