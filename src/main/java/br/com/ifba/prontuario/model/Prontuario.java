@@ -22,7 +22,7 @@ import org.springframework.beans.factory.annotation.Value;
 @Data
 @EqualsAndHashCode(callSuper = false)
 public class Prontuario extends PersistenceEntity implements Serializable{
-  
+    
     private Boolean ativo;
     private String descricao;
 }

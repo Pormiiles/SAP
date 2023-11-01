@@ -11,6 +11,7 @@ import br.com.ifba.prontuario.model.Prontuario;
 import br.com.ifba.prontuario.service.IServiceProntuario;
 import br.com.ifba.teste.model.Teste;
 import br.com.ifba.teste.service.IServiceTeste;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -40,5 +41,15 @@ public class Facade implements IFacade {
     @Override
     public void savePaciente(Paciente paciente) {
         servicePaciente.savePaciente(paciente);
+    } 
+    
+    @Override
+    public List<Teste> findAll() {
+        return serviceTeste.findAll();
+    }
+
+    @Override
+    public List<Prontuario> getAllProntuarios() {
+        return serviceProntuario.getAllProntuarios();
     }
 }

@@ -1,6 +1,12 @@
 package br.com.ifba;
 
 import br.com.ifba.paciente.view.TelaCadastroPaciente;
+
+import br.com.ifba.infrastructure.service.IFacade;
+import br.com.ifba.prontuario.view.ListaProntuarios;
+import br.com.ifba.prontuario.view.ProntuarioView;
+
+
 import br.com.ifba.teste.view.TesteView;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +16,17 @@ import org.springframework.stereotype.Component;
 public class TelaDeTestes extends javax.swing.JFrame {
     @Autowired
     private TesteView testeView;
+
+    IFacade facade;
+    @Autowired
+    private TesteView telaTeste;
+    
+    @Autowired
+    private ListaProntuarios telaListaProntuarios;
+    //===
+    @Autowired
+    private ProntuarioView telaProntuario;
+
     @Autowired
     private TelaCadastroPaciente telaCadastro;
     
@@ -58,6 +75,7 @@ public class TelaDeTestes extends javax.swing.JFrame {
         btn05.setBackground(new java.awt.Color(0, 0, 0));
         btn05.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn05.setForeground(new java.awt.Color(255, 255, 255));
+        btn05.setText("LISTA PRONTUARIOS");
         btn05.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn05ActionPerformed(evt);
@@ -201,7 +219,7 @@ public class TelaDeTestes extends javax.swing.JFrame {
     }//GEN-LAST:event_btn09ActionPerformed
 
     private void btn05ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn05ActionPerformed
-        
+        this.telaListaProntuarios.setVisible(true);
     }//GEN-LAST:event_btn05ActionPerformed
 
     private void btn07ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn07ActionPerformed
@@ -213,6 +231,7 @@ public class TelaDeTestes extends javax.swing.JFrame {
     }//GEN-LAST:event_btn06ActionPerformed
 
     private void btn03ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn03ActionPerformed
+
         this.telaCadastro.setVisible(true);
     }//GEN-LAST:event_btn03ActionPerformed
 
