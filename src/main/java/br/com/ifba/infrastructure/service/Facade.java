@@ -4,6 +4,8 @@
  */
 package br.com.ifba.infrastructure.service;
 
+import br.com.ifba.agendamento.model.Agendamento;
+import br.com.ifba.agendamento.service.IServiceAgendamento;
 import br.com.ifba.paciente.model.Paciente;
 import br.com.ifba.paciente.service.IServicePaciente;
 import br.com.ifba.prontuario.model.Prontuario;
@@ -27,6 +29,11 @@ public class Facade implements IFacade {
     private IServicePaciente servicePaciente;
     @Autowired
     private IServiceProntuario serviceProntuario;
+    
+    @Autowired
+    private IServiceAgendamento serviceAgendamento;
+    
+    
 
     //TESTE
     @Override
@@ -66,6 +73,12 @@ public class Facade implements IFacade {
     @Override
     public void savePaciente(Paciente paciente) {
         servicePaciente.savePaciente(paciente);
+    }
+    
+    
+    @Override
+    public void saveDataAgendamento(Agendamento agendamento){
+        serviceAgendamento.saveDataAgendamento(agendamento);
     }
 
    
