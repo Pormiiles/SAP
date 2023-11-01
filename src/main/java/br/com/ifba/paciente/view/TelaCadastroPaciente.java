@@ -201,7 +201,7 @@ public class TelaCadastroPaciente extends javax.swing.JFrame {
         //
         TelaConsultasPaciente telaConsultasPacientes = new TelaConsultasPaciente();
         telaConsultasPacientes.setVisible(true);
-        this.dispose();   
+        this.dispose(); // Fecha a tela atual   
 
     }//GEN-LAST:event_btnGerenciarActionPerformed
 

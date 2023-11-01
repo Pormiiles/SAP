@@ -4,10 +4,7 @@
  */
 package br.com.ifba.paciente.view;
 
-import br.com.ifba.infrastructure.service.IFacade;
-import br.com.ifba.paciente.model.Paciente;
 import javax.swing.table.DefaultTableModel;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -18,25 +15,17 @@ import org.springframework.stereotype.Component;
 public class TelaConsultasPaciente extends javax.swing.JFrame {
     
     /*TelaCadastroPaciente telaCadastroPaciente = new TelaCadastroPaciente(this);*/
-    @Autowired
-    private IFacade facade;
-    
-    private Paciente paciente = new Paciente();
+
     /**
      * Creates new form TelaConsultasPaciente
      */
     public TelaConsultasPaciente() {
         initComponents();
-        super.setLocationRelativeTo(null);
     }
     
     public void adicionarPacienteATabela(String nome, String matricula) {
-        
     DefaultTableModel model = (DefaultTableModel) tblPacientes.getModel();
     model.addRow(new Object[]{nome, matricula, "Aceito/Recusado", "Data", "Horário"});
-    
-    this.facade.savePaciente(paciente);
-    
     }
 
     

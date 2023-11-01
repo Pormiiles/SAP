@@ -23,9 +23,6 @@ public interface IFacade {
     
     //=====================PACIENTES=====================
     public abstract void savePaciente(Paciente paciente);  
-    public abstract List<Paciente> getAllPaciente();
-    public Paciente findByIdPaciente(Long id);
-    public abstract Paciente updatePaciente(Paciente paciente);
     
     //=====================PRONTUARIO=====================
     public void saveProntuario(Prontuario prontuario);
