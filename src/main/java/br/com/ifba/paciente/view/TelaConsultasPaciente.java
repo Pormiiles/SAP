@@ -70,6 +70,11 @@ public class TelaConsultasPaciente extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblPacientes);
 
         AcceptBtn.setText("Aceitar Solicitações");
+        AcceptBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AcceptBtnActionPerformed(evt);
+            }
+        });
 
         RefuseBtn.setText("Recusar Solicitações");
 
@@ -102,6 +107,10 @@ public class TelaConsultasPaciente extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void AcceptBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AcceptBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AcceptBtnActionPerformed
 
     /**
      * @param args the command line arguments
