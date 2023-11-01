@@ -4,7 +4,6 @@
  */
 package br.com.ifba.infrastructure.service;
 
-
 import br.com.ifba.paciente.model.Paciente;
 import br.com.ifba.paciente.service.IServicePaciente;
 import br.com.ifba.prontuario.model.Prontuario;
@@ -21,35 +20,56 @@ import org.springframework.stereotype.Controller;
  */
 @Controller
 public class Facade implements IFacade {
+
     @Autowired
     private IServiceTeste serviceTeste;
     @Autowired
     private IServicePaciente servicePaciente;
     @Autowired
     private IServiceProntuario serviceProntuario;
-    
+
+    //TESTE
     @Override
-    public void saveTeste(Teste teste){
+    public void saveTeste(Teste teste) {
         serviceTeste.saveTeste(teste);
-    }    
-    
+    }
+
+    @Override
+    public List<Teste> findAll() {
+        return serviceTeste.findAll();
+    }
+
+    //PRONTUARIO
     @Override
     public void saveProntuario(Prontuario prontuario) {
         serviceProntuario.saveProntuario(prontuario);
     }
 
     @Override
-    public void savePaciente(Paciente paciente) {
-        servicePaciente.savePaciente(paciente);
-    } 
-    
-    @Override
-    public List<Teste> findAll() {
-        return serviceTeste.findAll();
-    }
-
-    @Override
     public List<Prontuario> getAllProntuarios() {
         return serviceProntuario.getAllProntuarios();
     }
+
+    @Override
+    public List<Prontuario> getAllProntuariosArquivados() {
+        return serviceProntuario.getAllArquivados();
+    }
+    @Override
+    public void DesarquivarProntuario(Prontuario prontuario) {
+        serviceProntuario.DesarquivarProntuario(prontuario);
+    }
+     @Override
+    public Prontuario findProntuarioById(Long id) {
+        return serviceProntuario.findById(id);
+    }
+    //PACIENTE
+    @Override
+    public void savePaciente(Paciente paciente) {
+        servicePaciente.savePaciente(paciente);
+    }
+
+   
+
+    
+
 }

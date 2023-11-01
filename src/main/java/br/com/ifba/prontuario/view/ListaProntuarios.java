@@ -12,6 +12,8 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import br.com.ifba.prontuario.view.ListaProntuariosArquivados;
+import br.com.ifba.prontuario.view.ProntuarioView;
 
 /**
  *
@@ -19,36 +21,40 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class ListaProntuarios extends javax.swing.JFrame {
+    
     @Autowired
     private IFacade facade;
     private List<Prontuario> prontuarios;
-     
-     public ListaProntuarios() {
-          initComponents();
-          super.setLocationRelativeTo(null);
-     }
+    @Autowired
+    private ListaProntuariosArquivados listaArquiv;
+    @Autowired
+    private ProntuarioView prontuarioView;
+    
+    public ListaProntuarios() {
+        initComponents();
+        super.setLocationRelativeTo(null);
+    }
 
-     // Método que realiza a atualização dos dados na tabela.
-     @PostConstruct
-     public void atualizaTabela() {
-          try {
-               this.prontuarios = this.facade.getAllProntuarios();
-          } catch (Exception error) {
-               JOptionPane.showMessageDialog(null, error,
-                       "Erro ao buscar prontuarios!", JOptionPane.ERROR_MESSAGE);
-               return;
-          }
-
-          DefaultTableModel tabelaDados = (DefaultTableModel) ListaProntuarios.this.jTable2.getModel();
-          tabelaDados.setNumRows(0);
-
-          for (Prontuario prontuario: prontuarios) {
-               tabelaDados.addRow(new Object[]{prontuario.getId(),prontuario.getAtivo(), 
-                   prontuario.getDescricao()});
-          }
-          
-          
-     }
+    // Método que realiza a atualização dos dados na tabela.
+    @PostConstruct
+    public void atualizaTabela() {
+        try {
+            this.prontuarios = this.facade.getAllProntuarios();
+        } catch (Exception error) {
+            JOptionPane.showMessageDialog(null, error,
+                    "Erro ao buscar prontuarios!", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        DefaultTableModel tabelaDados = (DefaultTableModel) ListaProntuarios.this.jTable2.getModel();
+        tabelaDados.setNumRows(0);
+        
+        for (Prontuario prontuario : prontuarios) {
+            tabelaDados.addRow(new Object[]{prontuario.getId(), prontuario.getAtivo(),
+                prontuario.getDescricao()});
+        }
+        
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -65,6 +71,7 @@ public class ListaProntuarios extends javax.swing.JFrame {
         btnAreuivados = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
+        btnNovo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -81,6 +88,11 @@ public class ListaProntuarios extends javax.swing.JFrame {
         });
 
         btnAreuivados.setText("Arquivados");
+        btnAreuivados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAreuivadosActionPerformed(evt);
+            }
+        });
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -93,6 +105,13 @@ public class ListaProntuarios extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTable2);
         jTable2.getAccessibleContext().setAccessibleParent(jTable2);
 
+        btnNovo.setText("NOVO");
+        btnNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -102,7 +121,8 @@ public class ListaProntuarios extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnEditar)
                     .addComponent(btnArquivar)
-                    .addComponent(btnAreuivados))
+                    .addComponent(btnAreuivados)
+                    .addComponent(btnNovo))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -118,17 +138,17 @@ public class ListaProntuarios extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addComponent(jLabel1)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(61, 61, 61)
+                        .addComponent(btnNovo)
+                        .addGap(20, 20, 20)
                         .addComponent(btnEditar)
                         .addGap(31, 31, 31)
                         .addComponent(btnArquivar)
                         .addGap(29, 29, 29)
                         .addComponent(btnAreuivados))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
@@ -136,8 +156,14 @@ public class ListaProntuarios extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnArquivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArquivarActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_btnArquivarActionPerformed
+
+    private void btnAreuivadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAreuivadosActionPerformed
+        this.listaArquiv.setVisible(true);    }//GEN-LAST:event_btnAreuivadosActionPerformed
+
+    private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
+        this.prontuarioView.setVisible(true);    }//GEN-LAST:event_btnNovoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -178,6 +204,7 @@ public class ListaProntuarios extends javax.swing.JFrame {
     private javax.swing.JButton btnAreuivados;
     private javax.swing.JButton btnArquivar;
     private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnNovo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable2;

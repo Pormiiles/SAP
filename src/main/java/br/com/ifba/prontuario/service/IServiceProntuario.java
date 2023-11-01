@@ -13,9 +13,16 @@ import java.util.List;
  */
 public interface IServiceProntuario {
     public abstract void saveProntuario(Prontuario prontuario);
+    public abstract Prontuario findById(Long id);
     
     // Metéodo que retorna todos os prontuarios da base de dados.
     public abstract List<Prontuario> getAllProntuarios();
+    
+    //metodo que retorna os prontuarios arquivados:
+    public abstract List<Prontuario> getAllArquivados();
+    
+    //metodo que muda o ativo pra verdadeiro:
+    public abstract void DesarquivarProntuario(Prontuario prontuario);
 }
 
 
