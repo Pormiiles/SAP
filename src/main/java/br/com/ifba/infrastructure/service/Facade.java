@@ -35,7 +35,7 @@ public class Facade implements IFacade {
     
     
 
-    //TESTE
+    //=====================TESTE=====================
     @Override
     public void saveTeste(Teste teste) {
         serviceTeste.saveTeste(teste);
@@ -46,7 +46,7 @@ public class Facade implements IFacade {
         return serviceTeste.findAll();
     }
 
-    //PRONTUARIO
+    //=====================PRONTUARIO=====================
     @Override
     public void saveProntuario(Prontuario prontuario) {
         serviceProntuario.saveProntuario(prontuario);
@@ -69,13 +69,13 @@ public class Facade implements IFacade {
     public Prontuario findProntuarioById(Long id) {
         return serviceProntuario.findById(id);
     }
-    //PACIENTE
+    //=====================PACIENTE=====================
     @Override
     public void savePaciente(Paciente paciente) {
         servicePaciente.savePaciente(paciente);
     }
     
-    
+    //=====================AGENDAMENTO=====================
     @Override
     public void saveDataAgendamento(Agendamento agendamento){
         serviceAgendamento.saveDataAgendamento(agendamento);
