@@ -6,6 +6,7 @@ package br.com.ifba.prontuario.service;
 
 import br.com.ifba.prontuario.dao.IDaoProntuario;
 import br.com.ifba.prontuario.model.Prontuario;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,5 +24,26 @@ public class ServiceProntuario implements IServiceProntuario{
     public void saveProntuario(Prontuario prontuario) {
        prontuario.setAtivo(true); //seta todo prontuario como ativo por default
        dao.save(prontuario);
+    }
+    
+    @Override
+    public List<Prontuario> getAllProntuarios() {
+        return this.dao.findAll();
+    }
+
+    @Override
+    public List<Prontuario> getAllArquivados() {
+        return this.dao.findAllByAtivoIsFalse();
+    }
+
+    @Override
+    public Prontuario findById(Long id) {
+        return this.dao.findById(id);
+    }
+
+    @Override
+    public void DesarquivarProntuario(Prontuario prontuario) {
+        prontuario.setAtivo(true);
+        this.dao.save(prontuario);
     }
 }
