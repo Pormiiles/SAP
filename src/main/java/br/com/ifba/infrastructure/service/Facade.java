@@ -85,8 +85,25 @@ public class Facade implements IFacade {
         serviceAgendamento.saveDataAgendamento(agendamento);
     }
 
-   
-
+    @Override
+    public List<Agendamento> getAllAgendamento() {
+         return serviceAgendamento.getAllAgendamento();
+    }
     
+    @Override
+    public void updateAgendamento(Agendamento agendamento) {
+        this.serviceAgendamento.updateAgendamento(agendamento);
+        }
+
+    @Override
+    public void deleteAgendamento(Agendamento agendamento) {
+        this.serviceAgendamento.deleteAgendamento(agendamento);
+        }
+    
+    @Override
+    public Agendamento findAgendamentoById(Long id) {
+        return serviceAgendamento.findById(id);
+    }
+   
 
 }

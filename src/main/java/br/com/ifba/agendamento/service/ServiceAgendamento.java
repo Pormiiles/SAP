@@ -7,6 +7,7 @@ package br.com.ifba.agendamento.service;
 import br.com.ifba.agendamento.dao.IDaoAgendamento;
 import br.com.ifba.agendamento.model.Agendamento;
 import br.com.ifba.infrastructure.exception.BusinessException;
+import java.util.List;
 import javax.swing.JOptionPane;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,4 +46,23 @@ public class ServiceAgendamento implements IServiceAgendamento{
         //}
     }
     
+    @Override
+    public List<Agendamento> getAllAgendamento() {
+        return daoAgendamento.findAll();
+        }
+    
+    @Override
+    public void deleteAgendamento(Agendamento agendamento) {
+        this.daoAgendamento.delete(agendamento);
+        }
+    
+    @Override
+    public  void updateAgendamento(Agendamento agendamento) {
+        daoAgendamento.save(agendamento);
+       }
+    
+    @Override
+     public Agendamento findById(Long id) {
+          return daoAgendamento.getReferenceById(id);
+     }
 }
