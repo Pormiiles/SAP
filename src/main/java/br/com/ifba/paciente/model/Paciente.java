@@ -4,9 +4,11 @@
  */
 package br.com.ifba.paciente.model;
 
+import br.com.ifba.agendamento.model.Agendamento;
 import br.com.ifba.aluno.model.Aluno;
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -19,6 +21,9 @@ import lombok.EqualsAndHashCode;
 @Data
 @Table(name = "paciente")
 @EqualsAndHashCode(callSuper = false)
-public class Paciente extends Aluno {
+public class Paciente extends Aluno implements Serializable{
+    
+    @OneToOne
+    private Agendamento agendamento;
     
 }
