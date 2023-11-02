@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import br.com.ifba.prontuario.view.ListaProntuariosArquivados;
 import br.com.ifba.prontuario.view.ProntuarioView;
+import br.com.ifba.prontuario.view.EditarProntuario;
 
 /**
  *
@@ -29,7 +30,9 @@ public class ListaProntuarios extends javax.swing.JFrame {
     private ListaProntuariosArquivados listaArquiv;
     @Autowired
     private ProntuarioView prontuarioView;
-
+    @Autowired
+    private EditarProntuario editarPront;
+    
     public ListaProntuarios() {
         initComponents();
         super.setLocationRelativeTo(null);
@@ -86,6 +89,11 @@ public class ListaProntuarios extends javax.swing.JFrame {
         jLabel1.setText("Todos os Prontuarios:");
 
         btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
 
         btnArquivar.setText("Arquivar");
         btnArquivar.addActionListener(new java.awt.event.ActionListener() {
@@ -196,6 +204,14 @@ public class ListaProntuarios extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         updateTable();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        int index = jTable2.getSelectedRow();
+        long id = (long) jTable2.getValueAt(index, 0);
+        Prontuario selecionado = facade.findProntuarioById(id);
+        this.editarPront.SetProntuario(selecionado);
+        this.editarPront.setVisible(true);
+    }//GEN-LAST:event_btnEditarActionPerformed
 
     /**
      * @param args the command line arguments

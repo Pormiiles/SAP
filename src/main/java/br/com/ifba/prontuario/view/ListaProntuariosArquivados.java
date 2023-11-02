@@ -13,43 +13,37 @@ import javax.swing.table.DefaultTableModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-
 @Component
 public class ListaProntuariosArquivados extends javax.swing.JFrame {
 
     @Autowired
     private IFacade facade;
     private List<Prontuario> prontuarios;
+
     public ListaProntuariosArquivados() {
         initComponents();
     }
 
-     @PostConstruct
-     public void atualizaTabela() {
-          try {
-               this.prontuarios = this.facade.getAllProntuariosArquivados();
-          } catch (Exception error) {
-               JOptionPane.showMessageDialog(null, error,
-                       "Erro ao buscar prontuarios!", JOptionPane.ERROR_MESSAGE);
-               return;
-          }
+    @PostConstruct
+    public void atualizaTabela() {
+        try {
+            this.prontuarios = this.facade.getAllProntuariosArquivados();
+        } catch (Exception error) {
+            JOptionPane.showMessageDialog(null, error,
+                    "Erro ao buscar prontuarios!", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
-          DefaultTableModel tabelaDados = (DefaultTableModel) ListaProntuariosArquivados.this.jTable1.getModel();
-          tabelaDados.setNumRows(0);
+        DefaultTableModel tabelaDados = (DefaultTableModel) ListaProntuariosArquivados.this.jTable1.getModel();
+        tabelaDados.setNumRows(0);
 
-          for (Prontuario prontuario: prontuarios) {
-               tabelaDados.addRow(new Object[]{prontuario.getId(),prontuario.getAtivo(), 
-                   prontuario.getDescricao()});
-          }
-          
-          
-     }
-     
-     public void updateTable() {
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        model.setRowCount(0);
-        atualizaTabela();
+        for (Prontuario prontuario : prontuarios) {
+            tabelaDados.addRow(new Object[]{prontuario.getId(), prontuario.getAtivo(),
+                prontuario.getDescricao()});
+        }
+
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -62,6 +56,7 @@ public class ListaProntuariosArquivados extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         btnDesarq = new javax.swing.JButton();
+        btnExit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -93,14 +88,25 @@ public class ListaProntuariosArquivados extends javax.swing.JFrame {
             }
         });
 
+        btnExit.setText("SAIR");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnDesarq)
-                .addGap(18, 18, 18)
+                .addContainerGap(18, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnDesarq)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnExit)
+                        .addGap(28, 28, 28)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27))
         );
@@ -113,7 +119,9 @@ public class ListaProntuariosArquivados extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(165, 165, 165)
-                        .addComponent(btnDesarq)))
+                        .addComponent(btnDesarq)
+                        .addGap(31, 31, 31)
+                        .addComponent(btnExit)))
                 .addContainerGap(41, Short.MAX_VALUE))
         );
 
@@ -127,6 +135,15 @@ public class ListaProntuariosArquivados extends javax.swing.JFrame {
         facade.desarquivarProntuario(selecionado);
         updateTable();
     }//GEN-LAST:event_btnDesarqActionPerformed
+
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_btnExitActionPerformed
+    public void updateTable() {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+        atualizaTabela();
+    }
 
     /**
      * @param args the command line arguments
@@ -165,6 +182,7 @@ public class ListaProntuariosArquivados extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDesarq;
+    private javax.swing.JButton btnExit;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
