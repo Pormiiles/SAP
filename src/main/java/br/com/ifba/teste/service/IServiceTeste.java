@@ -5,6 +5,7 @@
 package br.com.ifba.teste.service;
 
 import br.com.ifba.teste.model.Teste;
+import java.util.List;
 
 /**
  *
@@ -12,4 +13,5 @@ import br.com.ifba.teste.model.Teste;
  */
 public interface IServiceTeste {
     public abstract void saveTeste(Teste teste);
+    public List<Teste> findAll();
 }

@@ -23,12 +23,10 @@ import lombok.Data;
 @Entity
 @Table(name = "perfil_usuario")
 @Data
-public class PerfilUsuario extends 
-        PersistenceEntity implements 
-        Serializable {
+public class PerfilUsuario extends PersistenceEntity implements Serializable {
      
-     private String nome;
-     private String descricao;
+    private String nome;
+    private String descricao;
      
      
 }

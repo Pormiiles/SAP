@@ -5,6 +5,7 @@
 package br.com.ifba.prontuario.service;
 
 import br.com.ifba.prontuario.model.Prontuario;
+import java.util.List;
 
 /**
  *
@@ -12,4 +13,18 @@ import br.com.ifba.prontuario.model.Prontuario;
  */
 public interface IServiceProntuario {
     public abstract void saveProntuario(Prontuario prontuario);
+    public abstract Prontuario findById(Long id);
+    
+    // Metéodo que retorna todos os prontuarios da base de dados.
+    public abstract List<Prontuario> getAllProntuarios();
+    
+    //metodo que retorna os prontuarios arquivados:
+    public abstract List<Prontuario> getAllArquivados();
+    
+    //metodo que muda o ativo pra verdadeiro:
+    public abstract void desarquivarProntuario(Prontuario prontuario);
+    //metodo que muda ativo para falso:
+    public abstract void arquivarProntuario(Prontuario prontuario);
 }
+
+

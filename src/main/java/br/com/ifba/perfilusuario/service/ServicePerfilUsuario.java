@@ -5,11 +5,11 @@
 package br.com.ifba.perfilusuario.service;
 
 import br.com.ifba.infrastructure.exception.BusinessException;
-import br.com.ifba.perfilusuario.dao.IPerfilUsuarioDao;
 import br.com.ifba.perfilusuario.model.PerfilUsuario;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import br.com.ifba.perfilusuario.dao.IDaoPerfilUsuario;
 
 /**
  *
@@ -35,7 +35,7 @@ public class ServicePerfilUsuario implements IServicePerfilUsuario {
     
      //================= OBJETO =================================================
     @Autowired
-    private IPerfilUsuarioDao perfilUsuarioDao;
+    private IDaoPerfilUsuario daoPerfilUsuario;
 
      //================= MÉTODOS ================================================
     @Override
@@ -43,10 +43,10 @@ public class ServicePerfilUsuario implements IServicePerfilUsuario {
        if(perfilUsuario == null) {
             throw new BusinessException(PERFIL_USUARIO_NULL);
         } 
-       if(perfilUsuarioDao.existsByNome(perfilUsuario.getNome()) == true) {
+       if(daoPerfilUsuario.existsByNome(perfilUsuario.getNome()) == true) {
             throw new BusinessException(PERFIL_USUARIO_EXISTE);
         }
-       return perfilUsuarioDao.save(perfilUsuario);
+       return daoPerfilUsuario.save(perfilUsuario);
     }
 
     @Override
@@ -54,10 +54,10 @@ public class ServicePerfilUsuario implements IServicePerfilUsuario {
         if(perfilUsuario == null) {
             throw new BusinessException(PERFIL_USUARIO_NULL);
         }
-        if(perfilUsuarioDao.existsById(perfilUsuario.getId()) == false) {
+        if(daoPerfilUsuario.existsById(perfilUsuario.getId()) == false) {
             throw new BusinessException(PERFIL_USUARIO_NAO_EXISTE);
         }
-        return perfilUsuarioDao.save(perfilUsuario);
+        return daoPerfilUsuario.save(perfilUsuario);
     }
 
     @Override
@@ -65,15 +65,15 @@ public class ServicePerfilUsuario implements IServicePerfilUsuario {
         if(perfilUsuario == null) {
             throw new BusinessException(PERFIL_USUARIO_NULL);
         }
-        if(perfilUsuarioDao.existsById(perfilUsuario.getId()) == false) {
+        if(daoPerfilUsuario.existsById(perfilUsuario.getId()) == false) {
             throw new BusinessException(PERFIL_USUARIO_NAO_EXISTE);
         }
-        perfilUsuarioDao.delete(perfilUsuario);
+        daoPerfilUsuario.delete(perfilUsuario);
     }
 
     @Override
     public List<PerfilUsuario> getAllPerfilUsuario() {
-        return this.perfilUsuarioDao.findAll();
+        return this.daoPerfilUsuario.findAll();
     }
     
     @Override
@@ -84,12 +84,12 @@ public class ServicePerfilUsuario implements IServicePerfilUsuario {
         if(nome.isEmpty()) {
             throw new BusinessException(NOME_VAZIO);
         }
-        return perfilUsuarioDao.findByNome(nome);
+        return daoPerfilUsuario.findByNome(nome);
     }
     
      @Override
      public PerfilUsuario findById(Long id) {
-          return perfilUsuarioDao.getReferenceById(id);
+          return daoPerfilUsuario.getReferenceById(id);
      }
     
 }

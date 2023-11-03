@@ -100,6 +100,7 @@ public class ProntuarioView extends javax.swing.JFrame {
         prontuario.setDescricao(txtDescricao.getText());
         //prontuario.setId(txtId.getText());
         this.facade.saveProntuario(prontuario);
+        this.setVisible(false);
     }//GEN-LAST:event_btnSubmitActionPerformed
 
     /**
