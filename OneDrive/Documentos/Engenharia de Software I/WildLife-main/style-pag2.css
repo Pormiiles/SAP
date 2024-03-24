@@ -1,0 +1,30 @@
+    /*css do botao switch pagina pag2*/
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: rgb(142, 177, 137); /* Cor do círculo dentro do botão no estado ligado */
+    background-image: url('arvore.png');
+    border-radius: 50%;
+    transition: transform 0.4s;
+  }
+
+
+.mapa-biomas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto; /* Centers the container horizontally */
+    /* Optionally, you can set a specific height and width for the container */
+    /* height: 100%; */
+    /* width: 100%; */
+}
+
+/* Optionally, you can style the image within the container */
+.mapa-biomas img {
+    max-width: 100%; /* Ensure the image doesn't exceed its container's width */
+    height: auto; /* Maintain aspect ratio */
+}
